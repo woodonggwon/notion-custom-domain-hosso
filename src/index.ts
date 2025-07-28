@@ -6,7 +6,7 @@ import { minify_sync as minify } from 'terser';
 import CleanCSS from 'clean-css';
 
 const {
-  PAGE_URL = 'https://hnuwdg.notion.site/23e246d40b34801399ede0ca6aa6f160?pvs=74',
+  PAGE_URL = 'https://hnuwdg.notion.site/23e246d40b34801399ede0ca6aa6f160',
   GA_MEASUREMENT_ID,
 } = process.env;
 
@@ -142,6 +142,12 @@ const app = express();
 
 app.use(
   proxy(pageDomain, {
+    proxyReqOptDecorator: (proxyReqOpts) => {
+      if (proxyReqOpts.headers) {
+        delete proxyReqOpts.headers['accept-encoding'];
+      }
+      return proxyReqOpts;
+    },
     filter: (req, res) => {
       // Pseudo endpoint returning 200
       if (/^\/200\/?/.test(req.url)) {
