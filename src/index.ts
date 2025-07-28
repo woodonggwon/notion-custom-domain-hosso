@@ -6,7 +6,7 @@ import { minify_sync as minify } from 'terser';
 import CleanCSS from 'clean-css';
 
 const {
-  PAGE_URL = 'https://hnuwdg.notion.site/6afaeb810d2544e088b15a3ba6791522',
+  PAGE_URL = 'https://hnuwdg.notion.site/23e246d40b34801399ede0ca6aa6f160?pvs=74',
   GA_MEASUREMENT_ID,
 } = process.env;
 
